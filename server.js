@@ -20,7 +20,9 @@ app.get('/', (req, res, next) => {
 });
 
 io.on('connection', (socket) => {
+  console.log('server connected')
   socket.on('chat message', (msg) => {
+    console.log('in the on(chat message) ready to emit')
     io.emit('chat message', msg);
   });
 });
