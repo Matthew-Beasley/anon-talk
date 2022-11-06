@@ -1,0 +1,30 @@
+{
+  "name": "y",
+  "version": "0.0.1",
+  "description": "privacy centric chat app",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "nodemon server.js",
+    "start:server": "nodemon server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Matthew-Beasley/anon-talk.git"
+  },
+  "author": "www.jetweb.systems",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Matthew-Beasley/anon-talk/issues"
+  },
+  "homepage": "https://github.com/Matthew-Beasley/anon-talk#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "http": "^0.0.1-security",
+    "path": "^0.12.7",
+    "socket.io": "^4.5.3",
+    "url": "^0.11.0"
+  }
+}
