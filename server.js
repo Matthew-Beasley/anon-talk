@@ -1,15 +1,18 @@
+/* eslint-disable no-underscore-dangle */
+import env from 'dotenv';
 import express from 'express';
-const app = express();
 import http from 'http';
-const server = http.createServer(app);
-import { Server } from "socket.io";
-const io = new Server(server);
+import { Server } from 'socket.io';
 import path from 'path';
-import {fileURLToPath} from 'url';
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+import { fileURLToPath } from 'url';
 import cors from 'cors';
 
+env.config();
+const app = express();
+const server = http.createServer(app);
+const io = new Server(server);
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 app.get('/', (req, res, next) => {
   try {
@@ -20,9 +23,7 @@ app.get('/', (req, res, next) => {
 });
 
 io.on('connection', (socket) => {
-  console.log('server connected')
   socket.on('chat message', (msg) => {
-    console.log('in the on(chat message) ready to emit')
     io.emit('chat message', msg);
   });
 });
