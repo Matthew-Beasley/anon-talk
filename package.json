@@ -38,8 +38,7 @@
     "socket.io": "^4.5.3",
     "stream-browserify": "^3.0.0",
     "stream-http": "^3.2.0",
-    "url": "^0.11.0",
-    "webpack": "^5.74.0"
+    "url": "^0.11.0"
   },
   "devDependencies": {
     "@babel/core": "^7.20.2",
@@ -51,6 +50,7 @@
     "eslint-plugin-jsx-a11y": "^6.6.1",
     "eslint-plugin-react": "^7.31.10",
     "eslint-plugin-react-hooks": "^4.6.0",
+    "webpack": "^5.74.0",
     "webpack-cli": "^4.10.0"
   }
 }
