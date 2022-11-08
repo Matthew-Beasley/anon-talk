@@ -1,11 +1,11 @@
-const path = require('path');
+var path = require('path');
 
 module.exports = {
   mode: 'production',
   entry: './src/index.js',
   output: {
     filename: 'main.js',
-    path: path.join(__dirname, 'dist'),
+    path: path.resolve(__dirname, 'dist'),
   },
   module: {
     rules: [
@@ -20,10 +20,10 @@ module.exports = {
             loader: 'file-loader',
             options: {
               name: '[name].[ext]',
-              outputPath: 'fonts/',
-            },
-          },
-        ],
+              outputPath: 'fonts/'
+            }
+          }
+        ]
       },
       {
         test: /\.js$/,
@@ -31,18 +31,18 @@ module.exports = {
         use: {
           loader: 'babel-loader',
           options: {
-            presets: ['@babel/preset-react'],
-          },
-        },
+            presets: ['@babel/preset-react']
+          }
+        }
       },
       {
         test: /\.(mp4|mp3|ogg)$/i,
         use: {
           loader: 'file-loader',
           options: {
-            name: '[name].[hash].[ext]',
-          },
-        },
+            name: '[name].[hash].[ext]'
+          }
+        }
       },
       {
         test: /\.(png|jpg|gif|svg)$/i,
@@ -55,18 +55,19 @@ module.exports = {
           },
         ],
       },
-    ],
+    ]
   },
   resolve: {
     fallback: {
-      buffer: require.resolve('buffer/'),
-      url: require.resolve('url/'),
-      stream: require.resolve('stream-browserify'),
-      querystring: require.resolve('querystring-es3'),
-      http: require.resolve('stream-http'),
-      crypto: require.resolve('crypto-browserify'),
-      zlib: require.resolve('browserify-zlib'),
-      assert: require.resolve('assert/'),
-    },
+      'buffer': require.resolve('buffer/'),
+      'url': require.resolve('url/'),
+      'stream': require.resolve('stream-browserify'),
+      'querystring': require.resolve('querystring-es3'),
+      'http': require.resolve('stream-http'),
+      'crypto': require.resolve('crypto-browserify'),
+      'zlib': require.resolve('browserify-zlib'),
+      'assert': require.resolve('assert/'),
+    }
   },
 };
+  

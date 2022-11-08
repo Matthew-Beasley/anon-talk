@@ -1,9 +1,11 @@
 import React from 'react';
 
-export default function Chat() {
+const Chat = () => {
   return (
-    <div>
+    <div className="app">
       <h1>Chat!</h1>
     </div>
-  );
-} 
+  )
+}
+
+export default Chat;

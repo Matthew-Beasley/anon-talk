@@ -1,6 +1,12 @@
+
 const express = require('express');
 const path = require('path');
+const cors = require('cors');
 const app = express();
+
+if (process.env.NODE_ENV !== 'production') {
+  require('dotenv').config();
+}
 
 if (process.env.NODE_ENV !== 'production') {
   require('dotenv').config();
@@ -8,14 +14,8 @@ if (process.env.NODE_ENV !== 'production') {
 
 app.use('/dist', express.static(path.join(__dirname, 'dist')));
 
-
-app.get('/', (req, res, next) => {
-  try {
-    res.sendFile(path.join(__dirname, 'index.html'));
-  } catch (error) {
-    next(error);
-  }
-});
+// If no other routes are hit, send the React app
+app.use((req, res) => res.sendFile(path.join(__dirname, '/index.html')));
 
 app.use((req, res, next) => {
   next({
