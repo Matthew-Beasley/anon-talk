@@ -1,17 +1,17 @@
-/* eslint-disable react/jsx-no-undef */
-/* eslint-disable react/jsx-filename-extension */
-/* eslint-disable react/react-in-jsx-scope */
-import { createRoot } from 'react-dom/client';
+import React from "react";
+import ReactDOM from "react-dom/client";
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import App from "./App";
+import Chat from "./Chat";
 
-const container = document.getElementById('app');
-const root = createRoot(container);
+const root = ReactDOM.createRoot(
+  document.getElementById("root")
+);
 root.render(
-  <React.StrictMode>
-    <BrowserRouter>
-      <Routes>
-        <Route exact path="/" element=<Home /> />
-        <Route path="/users" element=<Users /> />
-      </Routes>
-    </BrowserRouter>
-  </React.StrictMode>,
+  <BrowserRouter>
+    <Routes>
+      <Route path='/chat' element={<Chat />} />
+      <Route path='/' element={<App />} />
+    </Routes>
+  </BrowserRouter>
 );

@@ -3,12 +3,11 @@
   "version": "0.0.1",
   "description": "privacy centric chat app",
   "main": "index.js",
-  "type": "module",
   "scripts": {
     "build": "webpack",
-    "server": "nodemon server.js",
-    "dev": "nodemon server.js -- --ignore dist/ --ignore src/ & webpack --watch --mode=development",
-    "start": "node server.js -- --ignore dist/ --ignore src/ & webpack",
+    "start:webpack": "webpack --watch --mode=development",
+    "dev": "nodemon server.js -- --ignore dist/ --ignore src/ & npm run start:webpack",
+    "start": "node server.js -- --ignore dist/ --ignore src/ & npm run build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -44,7 +43,6 @@
     "@babel/core": "^7.20.2",
     "@babel/preset-react": "^7.18.6",
     "babel-loader": "^9.1.0",
-    "eslint": "^8.27.0",
     "eslint-config-airbnb": "^19.0.4",
     "eslint-plugin-import": "^2.26.0",
     "eslint-plugin-jsx-a11y": "^6.6.1",
