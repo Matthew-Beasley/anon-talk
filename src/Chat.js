@@ -16,6 +16,7 @@ const Chat = () => {
 
   const emitMessage = () => {
     socket.emit('chat message', `${sent}\n`)
+    setSent('');
   };
 
   return (

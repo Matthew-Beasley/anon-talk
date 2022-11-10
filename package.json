@@ -6,9 +6,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack",
-    "webpack": "webpack --watch --mode=development",
-    "dev": "npm run build & nodemon server.js -- --ignore dist/ --ignore src/",
-    "start": "npm run build & node server.js"
+    "webpack:dev": "webpack --watch --mode=development",
+    "dev": "nodemon server.js -- --ignore dist/ --ignore src/ & npm run webpack:dev",
+    "start": "node server.js & npm run build"
   },
   "repository": {
     "type": "git",
