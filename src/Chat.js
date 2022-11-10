@@ -4,7 +4,7 @@ import {io} from 'socket.io-client';
 
 const Chat = () => {
   let socket;
-  socket = io();
+  socket = io('https://jetweb-anontalk.herokuapp.com');
   const [recieved, setRecieved] = useState('');
   const [sent, setSent] = useState('');
 
