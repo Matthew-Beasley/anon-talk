@@ -8,7 +8,7 @@
     "build": "webpack",
     "webpack:dev": "webpack --watch --mode=development",
     "dev": "nodemon server.js -- --ignore dist/ --ignore src/ & npm run webpack:dev",
-    "start": "node server.js & npm run build"
+    "start": "npm run build & node server.js"
   },
   "repository": {
     "type": "git",
