@@ -7,8 +7,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack",
     "webpack": "webpack --watch --mode=development",
-    "dev": "nodemon server.js -- --ignore dist/ --ignore src/ & npm run webpack",
-    "start": "node server.js -- --ignore dist/ --ignore src/ & npm run build"
+    "start": "nodemon server.js -- --ignore dist/ --ignore src/ & npm run webpack",
+    "unused": "node server.js -- --ignore dist/ --ignore src/ & npm run webpack"
   },
   "repository": {
     "type": "git",
