@@ -7,19 +7,21 @@ const http = require('http');
 const server = http.createServer(app);
 const { Server } = require("socket.io");
 const io = new Server(server);
+const endpointRouter = require('./routes/endpoints');
+const { urlencoded } = require('express');
 
 if (process.env.NODE_ENV !== 'production') {
   require('dotenv').config();
 }
 
 app.use(cors());
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 app.use('/dist', express.static(path.join(__dirname, 'dist')));
-
+app.use('/endpoints', endpointRouter);
 app.get('/testhtml', (req, res, next) => {
     res.sendFile(path.join(__dirname, '/index2.html'))
 })
-
-// If no other routes are hit, send the React app
 app.use((req, res) => res.sendFile(path.join(__dirname, '/index.html')));
 
 io.on('connection', (socket) => {
