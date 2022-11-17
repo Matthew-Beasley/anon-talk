@@ -3,10 +3,6 @@ const express = require('express');
 const app = express();
 const path = require('path');
 const cors = require('cors');
-const http = require('http');
-const server = http.createServer(app);
-const { Server } = require("socket.io");
-const io = new Server(server);
 const endpointRouter = require('./routes/endpoints');
 const { urlencoded } = require('express');
 
@@ -19,16 +15,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use('/dist', express.static(path.join(__dirname, 'dist')));
 app.use('/endpoints', endpointRouter);
-app.get('/testhtml', (req, res, next) => {
-    res.sendFile(path.join(__dirname, '/index2.html'))
-})
 app.use((req, res) => res.sendFile(path.join(__dirname, '/index.html')));
-
-io.on('connection', (socket) => {
-    socket.on('chat message', (msg) => {
-      io.emit('chat message', msg);
-    });
-  });
 
 app.use((req, res, next) => {
   next({
@@ -42,4 +29,4 @@ app.use((err, req, res, next) => {
   });
 });
 
-server.listen(process.env.PORT, () => console.log('Listening on PORT ', process.env.PORT));
+app.listen(process.env.PORT, () => console.log('Listening on PORT ', process.env.PORT));

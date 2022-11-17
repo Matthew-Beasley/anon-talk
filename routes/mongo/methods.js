@@ -3,9 +3,7 @@ const { User, Message } = require('./models');
 const createUser = async ({ handle, password }) => {
     //const pwd = await hash(password);
     //record.password = pwd;
-    console.log('in createUser')
     const user = new User({ handle, password });
-    console.log('user is ', user)
     user.save(err => {
       if (err) {
         console.log(err)
@@ -17,12 +15,19 @@ const createUser = async ({ handle, password }) => {
     });
   };
 
+  const getUser = async () => {
+    try {
+      const ret = await User.find();
+      return ret;
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
   const createMessage = async ({ handle, message, ip }) => {
     //const pwd = await hash(password);
     //record.password = pwd;
-    console.log('in createMessage')
     const newMessage = new Message({ handle, message, ip});
-    console.log('message is ', message)
     newMessage.save(err => {
       if (err) {
         console.log(err)
@@ -34,4 +39,13 @@ const createUser = async ({ handle, password }) => {
     });
   };
 
-  module.exports = { createUser, createMessage };
+  const getMessages = async () => {
+    try {
+      const ret = await Message.find();
+      return ret;
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  module.exports = { createUser, getUser, createMessage, getMessages };

@@ -8,7 +8,7 @@ const userSchema = new Schema({
 });
 
 const messageSchema = new Schema({
-  handle: { type: String, unique: true, required: true },
+  handle: { type: String, required: true, required: true },
   message: { type: String, required: true },
   ip: { type: String, required: false}
 });
